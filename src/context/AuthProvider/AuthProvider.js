@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
@@ -25,6 +26,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const providerLogin = (provider) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  }
+
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -46,6 +52,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     loading,
     signIn,
+    providerLogin,
     logOut
   };
 
