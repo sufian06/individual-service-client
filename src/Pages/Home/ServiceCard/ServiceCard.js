@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({product}) => {
-  const {name, price, ratings, img} = product;
+  const {name, price, ratings, img, details} = product;
   return (
     <div>
       <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -16,8 +16,7 @@ const ServiceCard = ({product}) => {
             {name}
           </h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            {details}
           </p>
 
           <div>

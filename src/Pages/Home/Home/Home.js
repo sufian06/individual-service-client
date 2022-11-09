@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ServiceCard from '../ServiceCard/ServiceCard';
+// import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Home = () => {
   const [products, setProducts] = useState('');
@@ -14,7 +14,7 @@ const Home = () => {
       {/* <ServiceCard /> */}
       <div className='grid lg:grid-cols-3 gap-8'>
       {
-        products.map(product => <ServiceCard key={product.id} product={product} />)
+        // products.map(product => <ServiceCard key={product.id} product={product} />)
       }
       </div>
     </div>
