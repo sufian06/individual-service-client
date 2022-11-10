@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ServiceCard = ({service}) => {
+const ServiceItem = ({service}) => {
   const {name, price, ratings, img, details} = service;
   return (
     <div>
@@ -57,4 +57,4 @@ const ServiceCard = ({service}) => {
   );
 };
 
-export default ServiceCard;
+export default ServiceItem;
