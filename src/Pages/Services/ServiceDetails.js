@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
@@ -7,9 +7,9 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
 
-  const [comment, setComment] = useState();
+  // const [comment, setComment] = useState();
 
-  const { name, img, price, details } = service;
+  const { name, img, details } = service;
 
   const handleReview = (event) => {
     event.preventDefault();
@@ -19,14 +19,19 @@ const ServiceDetails = () => {
     const name = user?.displayName || "no name";
     const photoURL = user?.photoURL;
 
+    if (!user) {
+      alert("Please login to add a review");
+      return false;
+    }
+
     const review = {
       comment,
       email,
       name,
-      photoURL
+      photoURL,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://individual-service-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -47,13 +52,11 @@ const ServiceDetails = () => {
   return (
     <div className="container mx-auto my-8">
       <div className="max-w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-          <img
-            className="rounded-t-lg w-full h-[500px] object-cover"
-            src={img}
-            alt=""
-          />
-        </a>
+        <img
+          className="rounded-t-lg w-full h-[500px] object-cover"
+          src={img}
+          alt=""
+        />
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
@@ -65,7 +68,7 @@ const ServiceDetails = () => {
       </div>
 
       {/* all comments */}
-      <p>{comment}</p>
+      {/* <p>{comment}</p> */}
 
       {/* reviews */}
       <form onSubmit={handleReview}>

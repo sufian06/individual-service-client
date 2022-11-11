@@ -7,50 +7,63 @@ import MyReviews from "../../Pages/MyReviews/MyReviews";
 import Register from "../../Pages/Register/Register";
 import ServiceDetails from "../../Pages/Services/ServiceDetails";
 import Services from "../../Pages/Services/Services";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:5000')
+        loader: () => fetch("https://individual-service-server.vercel.app"),
       },
       {
-        path: '/home',
+        path: "/home",
         element: <Home />,
-        loader: () => fetch('http://localhost:5000')
+        loader: () => fetch("https://individual-service-server.vercel.app"),
       },
       {
-        path: '/services',
+        path: "/services",
         element: <Services />,
-        loader: () => fetch('http://localhost:5000/services')
+        loader: () =>
+          fetch("https://individual-service-server.vercel.app/services"),
       },
       {
-        path: '/service/:id',
+        path: "/service/:id",
         element: <ServiceDetails />,
-        loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://individual-service-server.vercel.app/service/${params.id}`
+          ),
       },
       {
-        path: '/myreviews',
-        element: <MyReviews />
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/addservice',
-        element: <AddService />
+        path: "/addservice",
+        element: (
+          <PrivateRoute>
+            <AddService />
+          </PrivateRoute>
+        ),
       },
       {
-        path: '/register',
-        element: <Register />
+        path: "/register",
+        element: <Register />,
       },
       {
-        path: '/login',
-        element: <Login />
+        path: "/login",
+        element: <Login />,
       },
-    ]
-  }
-])
+    ],
+  },
+]);
 
 export default router;

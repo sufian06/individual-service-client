@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyReviewsData = ({review}) => {
-  const {name, email, photoURL, comment} = review;
+  const {comment} = review;
   return (
     <div>
       <p>{comment}</p>
