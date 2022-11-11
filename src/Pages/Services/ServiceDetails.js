@@ -17,11 +17,13 @@ const ServiceDetails = () => {
     const comment = form.comment.value;
     const email = user?.email || "unregistered";
     const name = user?.displayName || "no name";
+    const photoURL = user?.photoURL;
 
     const review = {
       comment,
       email,
       name,
+      photoURL
     };
 
     fetch("http://localhost:5000/reviews", {
