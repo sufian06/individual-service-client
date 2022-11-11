@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../../Hooks/useTitle";
 import Carousel from "../Carousel/Carousel";
+import CTA from "../CTA/CTA";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Home = () => {
@@ -13,7 +14,7 @@ const Home = () => {
     <div className="container mx-auto mt-8">
       <Carousel />
       {/* <ServiceCard /> */}
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid lg:grid-cols-3 gap-8 justify-between">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service} />
         ))}
@@ -27,6 +28,7 @@ const Home = () => {
         </button>
         </Link>
       </div>
+      <CTA />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-import MyReviewsData from "./MyReviewsData";
+// import MyReviewsData from "./MyReviewsData";
+import ReviewRow from "./ReviewRow";
 
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const MyReviews = () => {
     <div className="container mx-auto my-8">
       <h2 className="text-3xl">You have: {reviews.length} reviews</h2>
       {reviews.map((review) => (
-        <MyReviewsData key={review._id} review={review} />
+        <ReviewRow key={review._id} review={review} />
       ))}
     </div>
   );
