@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../../Hooks/useTitle";
+import Carousel from "../Carousel/Carousel";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
 
   return (
     <div className="container mx-auto mt-8">
+      <Carousel />
       {/* <ServiceCard /> */}
       <div className="grid lg:grid-cols-3 gap-8">
         {services.map((service) => (
